@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JARVIS</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <!-- ── Fundo animado ── -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <!-- ── Container principal ── -->
+  <div class="container">
+
+    <!-- Cabeçalho -->
+    <header class="header">
+      <div class="logo-linha">
+        <div class="logo-ponto"></div>
+        <span class="logo-texto">J.A.R.V.I.S</span>
+        <div class="logo-ponto"></div>
+      </div>
+      <p class="subtitulo">Just A Rather Very Intelligent System</p>
+    </header>
+
+    <!-- Núcleo central — anel pulsante -->
+    <div class="nucleo-wrapper">
+      <div class="anel anel-externo"></div>
+      <div class="anel anel-medio"></div>
+      <div class="anel anel-interno"></div>
+      <div class="nucleo-centro">
+        <div class="nucleo-icone">
+          <!-- Triângulo do Homem de Ferro (reator arc) -->
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="40,8 72,68 8,68"
+              fill="none" stroke="#00d4ff" stroke-width="2.5"
+              filter="url(#brilho)" />
+            <circle cx="40" cy="44" r="10"
+              fill="none" stroke="#00d4ff" stroke-width="2"
+              filter="url(#brilho)" />
+            <circle cx="40" cy="44" r="4" fill="#00d4ff" opacity="0.8" />
+            <defs>
+              <filter id="brilho">
+                <feGaussianBlur stdDeviation="2" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status -->
+    <div class="status-container">
+      <span class="status-ponto" id="statusPonto"></span>
+      <span class="status-texto" id="statusTexto">AGUARDANDO</span>
+    </div>
+
+    <!-- Visualizador de ondas de voz -->
+    <div class="ondas" id="ondas">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- Chat / Log de conversas -->
+    <div class="chat-container">
+      <div class="chat-header">
+        <span class="chat-titulo">&#x25B6; LOG DE SISTEMA</span>
+      </div>
+      <div class="chat-log" id="chatLog">
+        <div class="msg-sistema">Sistema inicializado. Aguardando conexão...</div>
+      </div>
+    </div>
+
+    <!-- Input de texto (alternativa ao microfone) -->
+    <div class="input-container">
+      <input
+        type="text"
+        id="inputComando"
+        class="input-texto"
+        placeholder="Digite um comando..."
+        autocomplete="off"
+      />
+      <button class="btn-enviar" id="btnEnviar">&#x27A4;</button>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="rodape">
+      STARK INDUSTRIES &nbsp;|&nbsp; SISTEMA AUTÔNOMO v1.0
+    </footer>
+
+  </div>
+
+  <!-- Socket.IO (CDN) -->
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="/script.js"></script>
+</body>
+</html>
